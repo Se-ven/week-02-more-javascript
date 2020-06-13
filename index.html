@@ -15,9 +15,6 @@
 
         console.log(isUserInAttendance);
 
-        // init an empty array
-        let cars = [];
-
         let smallCar = {
             engineSize: 4,
             displacement: 2,
@@ -25,28 +22,40 @@
 
         };
 
+        let smallTruck = {
+            engineSize: 6,
+            displacement: 4,
+            fuelType: 'regular'
+        }
+
+        // init empty array
+        let vehicles = [];
+        vehicles.push(smallCar);
+        vehicles.push(smallTruck);
+
         function getEfficiencyRating(vehicle) {
             let rating = 0;
 
-            if (vehicle.engineSize < 5) {
-                rating = 8;
-            }
+            //     if (vehicle.engineSize < 5) {
+            //         rating = 8;
+            //     }
 
-            if (vehicle.engineSize >= 5 && vehicle.engineSize < 7) {
-                rating = 6;
-            }
-
+            //     if (vehicle.engineSize >= 5 && vehicle.engineSize < 7) {
+            //         rating = 6;
+            //     
+            //}
             // if there's a range 
             // if [1, 2, 3, 5, 9].includes(engineSize) 
 
+
             // Slide number 16 in week two for more switch statement info
             switch (vehicle.engineSize) {
-                case 1: 
+                case 1:
                 case 2:
                 case 3:
                 case 4:
                     rating = 8;
-                    break; 
+                    break;
                 case 5:
                 case 6:
                     rating = 6;
@@ -56,6 +65,7 @@
                     rating = 4;
                     break;
                 default:
+                    rating = 0;
             }
 
             if (vehicle.fuelType == 'diesel') {
@@ -64,17 +74,23 @@
             }
 
             return rating;
+
         }
-        // send a var value into the func
-        // takes whatever teh val of smallCar and sends it INTO the getEffieicn
-        // func. Small car is reassigned into vehicle for the func.
+        console.log({ vehicles })
+        // forEach takes a func as its param
+        // for each item in vehicles the function will execute for
+        // the vehicle 
+        // **REVIEW THIS OFTEN **
+        vehicles.forEach(function (vehicle) {
+            let result = getEfficiencyRating(vehicle);
+            console.log({ result })
 
-        let smallCarRating = getEfficiencyRating(smallCar);
+        });
 
-        // expect to return a 9
-
-
-        console.log(smallCarRating);
+        // alternative looping method
+        for (let index = 0; index < vehicles.length; index++) {
+            console.log(vehicles[index]);
+        }
 
     </script>
 
